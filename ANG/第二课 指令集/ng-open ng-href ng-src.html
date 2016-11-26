@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-open ng-href ng-src</title>
+</head>
+<body>
+<h1>内置指令的例子</h1>
+<h2>ng-open</h2>
+<div ng-controller="myCtrl">
+    展开: <input type="checkbox" ng-model="showDetails">
+    <details ng-open="showDetails">
+        <summary>PHP课程</summary>
+        <p>PHP是世界上最好的语言</p>
+    </details>
+    <hr>
+    <p><a href="{{userInfo.space}}">hyk的空间</a></p>
+    <p><a ng-href="{{userInfo.space}}">hyk的空间</a></p>
+    <p><img src="{{userInfo.img}}">hyk的空间头像</p>
+    <p><img ng-src="{{userInfo.img}}">hyk的空间头像</p>
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller("myCtrl",function($scope){
+        $scope.showDetails=false;
+        $scope.userInfo={};
+        $scope.userInfo.space="http://user.qzone.qq.com/1051905606/infocenter?ptsig=KF6FL5LFr7QbXJTv-2mRfHiEEb-vUIm3bBAgw4u0W7g_";
+        $scope.userInfo.img="http://qlogo3.store.qq.com/qzone/1051905606/1051905606/100?1409380545"
+    });
+</script>
+</body>
+</html>

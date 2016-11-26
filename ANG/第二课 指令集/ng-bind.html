@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-bind</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <p ng-bind-template="{{a}}--{{b}}--{{c}}"></p>
+    <p>FirstName: <input type="text" ng-model="firstName"></p>
+    <p>LastName: <input type="text" ng-model="lastName"></p>
+    <p ng-bind-template="Hello {{firstName}}·{{lastName}}"></p>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("myCtrl",function($scope){
+        $scope.a="hyk";
+        $scope.b="18";
+        $scope.c="hyk@163.com";
+        $scope.firstName="洪";
+        $scope.lastName="苑坤";
+    });
+</script>
+</body>
+</html>

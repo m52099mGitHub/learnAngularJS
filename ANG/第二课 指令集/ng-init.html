@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-init初始化数据</title>
+</head>
+<body>
+    <h1>内置指令的例子</h1>
+    <h2>ng-init初始化数据</h2>
+    <ul ng-init="username='hyk';age=18;email='1051905606@163.com'">
+        <li>用户名:{{username}}</li>
+        <li>年龄:{{age}}</li>
+        <li>邮箱:{{email}}</li>
+        <li ng-bind="username">防止网速过慢时的闪烁方法1:  属性方法</li>
+        <li class="ng-bind:email">防止网速过慢时的闪烁方法2: 类方法 </li>
+    </ul>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("myCtrl",function($scope){
+
+    });
+</script>
+</body>
+</html>

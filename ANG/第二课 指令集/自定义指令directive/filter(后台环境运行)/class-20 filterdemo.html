@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令 directive</title>
+</head>
+<body>
+
+<div ng-controller="myCtrl">
+    <p><button ng-click="loadDate()">加载用户</button></p>
+    <p>筛选用户: <input type="text" ng-model="keyword"/></p>
+    <hr/>
+    <table border="1" cellpadding="0" cellspacing="0" bgcolor="aqua">
+        <tr>
+            <td>编号</td>
+            <td>用户名</td>
+            <td>年龄</td>
+            <td>邮箱</td>
+        </tr>
+        <tr ng-repeat="user in (userList|filter:keyword|orderBy:orderByAttr:sort)">
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <button ng-click="orderByAttr='id';sort=!sort">按照编号排序</button>
+                <button ng-click="orderByAttr='age';sort=!sort">按照年龄排序</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script type="text/javascript" src="angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope,$http){
+        $scope.loadDate=function(){
+            console.log('开始加载数据...');
+            $http.get('getUsers.php').success(function(data){
+                console.log('数据加载完成');
+                $scope.userList=data;
+            }).error(function(){
+                alert('error');
+            });
+        };
+    });
+</script>
+</body>
+</html>

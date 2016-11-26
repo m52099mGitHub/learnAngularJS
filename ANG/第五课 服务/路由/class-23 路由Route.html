@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li><a href="#start">首页</a></li>
+            <li><a href="#main">主体</a></li>
+            <li><a href="#detail">详情</a></li>
+            <li><a href="#email">emailMe</a></li>
+        </ul>
+    </div>
+    <div ng-view></div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/angular-route.min.js"></script>
+<script>
+    var app=angular.module('myApp',['ngRoute']);
+    app.config(function($routeProvider){
+        $routeProvider.when('/start',{
+            template:'<div class="well">我是首页</div>'
+        }).when('/main',{
+            template:'<div class="well">我是主体内容</div>'
+        }).when('/detail',{
+            template:'<div class="well">我是详情内容</div>'
+        }).when('/email',{
+            template:'<div class="well">发邮件联系我:HYK@163.com</div>'
+        }).otherwise({
+            redirectTo:'/start'
+        });
+    });
+</script>
+</body>
+</html>

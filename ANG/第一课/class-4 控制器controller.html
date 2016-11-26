@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title> 控制器controller</title>
+</head>
+<body>
+<h1>控制器的例子</h1>
+<div ng-controller="myCtrl1">
+    <p>用户名:{{username}}</p>
+    <p>邮箱:{{email}}</p>
+    <p>年龄:{{age}}</p>
+</div>
+
+<div ng-controller="myCtrl2">
+    <p>{{text}}</p>
+    <button ng-click="play()">play</button>
+</div>
+<div ng-controller="myCtrl3">
+    <p>{{userinfo.username}}</p>
+    <p>{{userinfo.age}}</p>
+    <p>{{userinfo.email}}</p>
+    <button ng-click="userinfo.study()">study</button>
+</div>
+
+
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    angular.module('myApp',[])
+            .controller('myCtrl1',function($scope){
+                $scope.username='HYK';
+                $scope.email='HYK@163.com';
+                $scope.age=24;
+            })
+            .controller('myCtrl2',function($scope){
+                 $scope.text='我是myCtrl2的内容';
+                 $scope.play=function(){
+                     alert('playing...')
+                 }
+            })
+            .controller('myCtrl3',function($scope){
+                $scope.userinfo={
+                    username:'HYK',
+                    email:'HYK@163.com',
+                    age:24,
+                    study:function(){
+                    alert('studying...');
+                    }
+                };
+            })
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-click</title>
+</head>
+<body>
+
+<div ng-controller="myCtrl">
+    <h2>ng-click</h2>
+    <button ng-click="count=count+1">+1</button>
+    count:{{count}}
+    <button ng-click="derc()">-1</button>
+    <hr>
+    <button ng-click="sayHi()">sayHi</button>
+    <p ng-bind="myText"></p>
+    <button ng-click="sayHi1('hyk')">sayHi</button>
+    <p ng-bind="myText1"></p>
+</div>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.count=0;
+        $scope.derc=function(){
+            $scope.count--;
+        };
+        $scope.sayHi=function(){
+            $scope.myText="Hi Everybody"
+        };
+        $scope.sayHi1=function(username){
+            $scope.myText1='hi'+username;
+        }
+    });
+</script>
+</body>
+</html>

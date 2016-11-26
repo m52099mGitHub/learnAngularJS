@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>URL引入文件</title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+	<hello></hello>
+	<script src="../js/angular.js"></script>
+	<script>
+		var app=angular.module("myApp",[]);
+		app.run(function($templateCache){
+			$templateCache.put('test(双向数据绑定)3.html',"<div>Hello everyone!</div>")
+		})
+		app.directive('hello',function($templateCache){
+			return{
+				restrict:'AEMC',
+				template:$templateCache.get('test(双向数据绑定)3.html'),
+				replace:true
+			}
+		});
+	</script>
+</body>
+</html>

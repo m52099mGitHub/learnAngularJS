@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-bind(sanitize)</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <p>{{myText}}</p>
+    <p ng-bind-html="myText"></p>
+</div>
+<script src="js/angular.js"></script>
+<script src="js/angular-sanitize.js"></script>
+<script>
+    var app=angular.module("myApp",['ngSanitize']);//注入模块:ngSanitize
+    app.controller("myCtrl",function($scope){
+        $scope.myText="this is hyk show Time<a href='http://www.baidu.com' target='_blank'>百度</a>";
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>案例3</title>
+</head>
+<body>
+<div ng-controller="MyCtrl">
+   <h1>用户列表</h1>
+    <p><input type="text" placeholder="请输入关键字" ng-model="keyword"></p>
+    <table border="1" cellpadding="0" cellspacing="0" bgcolor="aqua" width="70%">
+        <tr>
+            <td>编号</td>
+            <td>用户名</td>
+            <td>年龄</td>
+            <td>薪水</td>
+        </tr>
+        <tr ng-repeat="(k,user) in userInfo|filter:keyword">
+            <td>{{k+1}}</td>
+            <td>{{user.username|lowercase}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.salary|currency:'RMB'}}</td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl',function($scope){
+        $scope.userInfo=[
+            {id:1,username:'Hyk',age:12,salary:1234},
+            {id:2,username:'xx',age:18,salary:1634},
+            {id:4,username:'XX',age:18,salary:2234},
+            {id:12,username:'TOM',age:30,salary:5354},
+            {id:16,username:'HYK',age:42,salary:7634},
+            {id:30,username:'hy',age:22,salary:8264},
+            {id:25,username:'kk',age:52,salary:9264}
+        ]
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-if(show/hide)</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .even{
+            background-color: yellow;
+        }
+        .odd{
+            background-color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+<h1>内置指令的例子</h1>
+<h2>ng-if</h2>
+<div ng-controller="myCtrl">
+    <div ng-if="userInfo.isMember==true">{{userInfo.username}}是会员</div>
+    <div ng-if="userInfo.isMember==false">{{userInfo.username}}不是会员</div>
+    <div ng-if="isShow">
+        <h1>this is a test</h1>
+    </div>
+    <div ng-show="isShow">
+        <h1>this is a test</h1>
+    </div>
+    <div ng-hide="isShow">
+        <h1>this is a test</h1>
+    </div>
+    <hr>
+    <h1>实时统计字数</h1>
+    <h2>您最多可输入100字的内容</h2>
+    <textarea ng-model="comment" cols="50" ng-change="countChars()" placeholder="请输入评论..."></textarea>
+    <p>您当前已输入{{$count}}个字符,还可输入{{total-count}}个字符</p>
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller("myCtrl",function($scope){
+        $scope.userInfo={
+            username:'HYK',
+            isMember:true
+        };
+        $scope.isShow=true;//true显示
+        $scope.total=100;
+        $scope.count=0;
+        $scope.countChars=function(){
+            $scope.count++;
+        }
+    });
+</script>
+</body>
+</html>

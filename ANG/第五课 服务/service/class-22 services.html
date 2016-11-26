@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>services</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <h1>内置服务的例子</h1>
+    <p>当前页面的URL:{{currentUrl}}</p>
+    <p>$timeout:{{test}}</p>
+    <p>当前时间为:{{currentTime}}</p>
+</div>
+
+<div ng-controller="myCtrl1">
+    <p>首字母大写:{{test}}</p>
+</div>
+
+
+<script type="text/javascript" src="angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    //$location---相当于window.location
+    app.controller('myCtrl',function($scope,$location,$timeout,$interval){
+        $scope.currentUrl=$location.absUrl();
+        //$timeout--setTimeout
+        $timeout(function(){
+            $scope.test='this is a test';
+        },3000);
+        $scope.currentTime=new Date().toLocaleTimeString();
+        $interval(function(){
+            $scope.currentTime=new Date().toLocaleTimeString();
+        },1000);
+    });
+    //自定义service
+    app.service('testService',function(){
+        this.capitalize=function(str){
+            return str[0].toUpperCase()+str.slice(1);
+        }
+    });
+    app.controller('myCtrl1',function($scope,testService){
+        $scope.test=testService.capitalize('hello world')
+    })
+</script>
+</body>
+</html>

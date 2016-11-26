@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Ngview</title>
+</head>
+<body>
+	<hello></hello>
+	<script src="../js/angular.js"></script>
+	<script>
+		var app=angular.module("myApp",[]);
+		app.directive('hello',function(){
+			return{
+				restrict:'E',
+				template:'<div>Hello everyone!</div>',
+				replace:true
+			}
+		});
+	</script>
+</body>
+</html>

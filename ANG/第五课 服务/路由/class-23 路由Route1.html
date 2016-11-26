@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li><a href="#start">首页</a></li>
+        <li><a href="#cate">分类</a></li>
+        <li><a href="#detail">详情</a></li>
+        <li><a href="#email">联系我们</a></li>
+    </ul>
+</div>
+<div ng-view></div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/angular-route.min.js"></script>
+<script>
+    var app=angular.module('myApp',['ngRoute']);//用ngRoute模块
+    app.controller('MyCtrl',function(){
+    });
+    app.config(function($routeProvider){
+        $routeProvider.when('/start',{
+            template:'<h1>我是首页</h1>'
+        }).when('/cate',{
+            template:'<h1>我是分类</h1>'
+        }).when('/detail',{
+            template:'<h1>我是详细内容</h1>'
+        }).when('/email',{
+            template:'<h1>email me</h1>'
+        }).otherwise({
+            redirectTo:'/start'
+        });
+    });
+</script>
+</body>
+</html>
+

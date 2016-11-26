@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令 directive</title>
+</head>
+<body>
+
+<div ng-controller="myCtrl">
+    <my-directive></my-directive>
+    <my1-directive my-url="http://www.jd.com" my-text="京东"></my1-directive>
+    <my2-directive my-attr="http://www.tmall.com" my-link-text="淘宝"></my2-directive>
+</div>
+
+
+<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]).controller('myCtrl',function(){});
+    app.directive('myDirective',function(){
+        return{
+            restrict:'EA',
+            template:'<a href="http://www.jd.com" target="_blank">京东</a>'
+        }
+    });
+    app.directive('my1Directive',function(){
+        return{
+            restrict:'EA',
+            scope:{
+                myUrl:'@',
+                myText:'@'
+            },
+            template:"'<a href='{{myUrl}}' target='_blank'>{{myText}}</a>"
+        }
+    });
+    app.directive('my2Directive',function(){
+        return{
+            restrict:'EA',
+            scope:{
+                myUrl:'@myAttr',
+                myText:'@myLinkText'
+            },
+            template:"'<a href='{{myUrl}}' target='_blank'>{{myText}}</a>"
+        }
+    });
+</script>
+</body>
+</html>

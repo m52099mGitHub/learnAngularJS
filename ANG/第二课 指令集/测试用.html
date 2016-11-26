@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-show/hide</title>
+</head>
+<body>
+<div ng-init="list = ['Chrome', 'Safari', 'Firefox', 'IE'] ">
+    Number formatting: {{ 1234567890 | number }} <br>
+    array filtering <input ng-model="predicate">
+    {{ list | filter:predicate | json }}
+</div>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+
+</script>
+</body>
+</html>
+
+
+<!--
+<!doctype html>
+<html lang="en" ng-app="timeExampleModule">
+<head>
+    <meta charset="UTF-8">
+    <title>clock</title>
+</head>
+<body>
+<div ng-controller="ClockCtrl">
+    Current time is: {{ time.now }}
+</div>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    angular.module('timeExampleModule', []).
+    factory('time', function($timeout) {
+        var time = {};
+        (function tick() {
+            time.now = new Date().toString();
+            $timeout(tick, 1000);
+        })();
+        return time;
+    });
+    function ClockCtrl($scope, time) {
+        $scope.time = time;
+    }
+</script>
+</body>
+</html>-->

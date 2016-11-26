@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域scope</title>
+</head>
+<body>
+<h1>作用域</h1>
+   <h2>NO.1</h2>
+    <div ng-controller="myCtrl1">
+        <p>{{username}}</p>
+        <p>{{test}}</p>
+    </div>
+
+    <h2>NO.2</h2>
+    <div ng-controller="myCtrl2">
+        <p>{{username}}</p>
+        <p>{{test}}</p>
+    </div>
+
+    <h2>NO.3</h2>
+    <div ng-controller="parentCtrll">
+        <p>父:{{test1}}</p>
+        <p>父:{{test2}}</p>
+        <div ng-controller="childCtrll">
+            <p>子:{{test1}}</p>
+            <p>子:{{test2}}</p>
+        </div>
+    </div>
+
+    <h2>NO.4:字符串,数字,布尔类型是值的赋值 子级不会影响父级</h2>
+    <div ng-controller="parentCtrl2">
+        <p>{{test1}}</p>
+        <p><button ng-click="fun()">test</button></p>
+        <div ng-controller="childCtrl2">
+            <p>{{test1}}</p>
+            <p><button ng-click="fun1()">test1</button></p>
+        </div>
+    </div>
+
+    <h2>NO.5  数组对象引用   子级和父级相互产生影响</h2>
+    <div ng-controller="parentCtrl3">
+        <p>{{userInfo.username}}</p>
+        <p><button ng-click="fun2()">test2</button></p>
+        <div ng-controller="childCtrl3">
+            <p>{{userInfo.username}}</p>
+            <p><button ng-click="fun3()">test3</button></p>
+        </div>
+    </div>
+
+
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+//    $rootScope根作用域,使写在myCtrl1的test显示在了myCtrl2中
+//    <h2>NO.1</h2>
+    app.controller('myCtrl1',function($scope,$rootScope){
+        $scope.username='HYK';
+        $rootScope.test='this is a test';
+//        aaa被显示出来,说明查找数据时往上级直至根部趋近搜索,最后才显示根部的内容,
+        $scope.test='aaa';
+        $scope.email='HYK@163.com';
+        $scope.age=24;
+    });
+    //    <h2>NO.2</h2>
+    app.controller('myCtrl2',function($scope){
+        $scope.username='XX';
+        $scope.email='HYK@163.com';
+        $scope.age=24;
+    });
+//    嵌套
+    //    <h2>NO.3</h2>
+    app.controller('parentCtrll',function($scope){
+        $scope.test1='parent';
+        $scope.test2='PP';
+    }).controller('childCtrll',function($scope){
+        $scope.test1='child';
+    });
+
+
+    //    <h2>NO.4:字符串,数字,布尔类型是值的赋值 子级不会影响父级</h2>
+    app.controller('parentCtrl2',function($scope){
+        $scope.test1='a';
+        $scope.fun=function(){
+            $scope.test1='aa--parent';
+        };
+    }).controller('childCtrl2',function($scope){
+        $scope.fun1=function(){
+            $scope.test1='bb--child';
+        };
+    })
+
+
+    //    <h2>NO.5  数组对象引用   子级和父级相互产生影响</h2>
+    app.controller('parentCtrl3',function($scope){
+        $scope.userInfo={
+            username:'HYK'
+        };
+        $scope.fun2=function(){
+            $scope.userInfo.username='HYKXX';
+        }
+    }).controller('childCtrl3',function($scope){
+        $scope.fun3=function(){
+            $scope.userInfo.username='HYKXXXE';
+        }
+    })
+</script>
+</body>
+</html>

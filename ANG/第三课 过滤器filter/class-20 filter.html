@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>num过滤器</title>
+</head>
+<body>
+
+<div ng-controller="myCtrl">
+    <h2>num过滤器</h2>
+    <ul>
+        <li>{{123}}</li>
+        <li>{{12345.67}}</li>
+        <li>{{12345.678|number}}</li>
+        <li>{{123456789|number}}</li>
+        <li>{{12.3456789|number:2}}</li>
+    </ul>
+    <h1>currency 格式化数字为货币形式</h1>
+    <ul>
+        <li>{{1234|currency}}</li>
+        <li>{{42536.4646|currency}}</li>
+        <li>{{253543|currency:'元'}}</li>
+        <li>{{432536|currency:'RMB'}}</li>
+    </ul>
+    <h1>date日期过滤器</h1>
+    <ul>
+        <li>{{today}}</li>
+        <li>{{today|date:'medium'}}</li>
+        <li>{{today|date:'short'}}</li>
+        <li>{{today|date:'fullDate'}}</li>
+        <li>{{today|date:'longDate'}}</li>
+        <li>{{today|date:'shortDate'}}</li>
+        <li>{{today|date:'shortTime'}}</li>
+        <li><h1>年</h1></li>
+        <li>{{today|date:'yyyy'}}</li>
+        <li>{{today|date:'yy'}}</li>
+        <li>{{today|date:'y'}}</li>
+        <li><h1>月</h1></li>
+        <li>{{today|date:'MMMM'}}</li>
+        <li>{{today|date:'MMM'}}</li>
+        <li>{{today|date:'MM'}}</li>
+        <li>{{today|date:'M'}}</li>
+        <li><h1>日</h1></li>
+        <li>{{today|date:'dd'}}</li>
+        <li>{{today|date:'d'}}</li>
+        <li><h1>星期</h1></li>
+        <li>{{today|date:'EEEE'}}</li>
+        <li>{{today|date:'EEE'}}</li>
+        <li><h1>时间 小时</h1></li>
+        <li>24小时制数字小时{{today|date:'HH'}}</li>
+        <li>一天中的第几个小时{{today|date:'H'}}</li>
+        <li>12小时制的数字小时{{today|date:'hh'}}</li>
+        <li>上午或下午的第几个小时{{today|date:'h'}}</li>
+
+        <li><h1>时间 分钟</h1></li>
+        <li>数字分钟{{today|date:'mm'}}</li>
+        <li>一个小时内的第几分钟{{today|date:'m'}}</li>
+
+        <li><h1>时间 秒</h1></li>
+        <li>数字秒{{today|date:'ss'}}</li>
+        <li>一分钟内的第几分秒{{today|date:'s'}}</li>
+        <li>毫秒数{{today|date:'sss'}}</li>
+
+        <li>上午或下午的标志{{today|date:'a'}}</li>
+        <li>四位时区标志{{today|date:'z'}}</li>
+
+        <li>{{today|date:'yyyy-MM-dd HH:mm:ss'}}</li>
+        <li>{{today|date:'HH:mm:ss yyyy-MM-dd'}}</li>
+    </ul>
+    <h1>lowercase|uppercase</h1>
+    <ul>
+        <li>{{'HYK'|lowercase}}</li>
+        <li>{{'hyk'|uppercase}}</li>
+    </ul>
+    <h1>filter</h1>
+    <ul>
+        <li>带K{{users|filter:'k'}}</li>
+        <li>{{users|filter:'1'}}</li>
+        <li>{{users|filter:'1':true}}</li>
+        <li>{{users|filter:'k'}}</li>
+        <li>{{users|filter:'k':false}}</li>
+        <li>首字母大写:{{users|filter:isCapitalized}}</li>
+    </ul>
+    <h1>json</h1>
+    <ul>
+        <li>{{{'username':'HYK','email':'HYK@163.com'}|json}}</li>
+    </ul>
+
+    <h1>宽度限制:limitTo</h1>
+    <ul>
+        <li>{{'helloworld'}}</li>
+        <li>限制字符串输出宽度{{'helloworld'|limitTo:5}}</li>
+        <li>限制字符串输出宽度{{'this is a test'|limitTo:3}}...</li>
+        <li>限制数组输出宽度{{['a','b','c','d']|limitTo:2}}...</li>
+    </ul>
+    <h1>order by 排序</h1>
+    <ul>
+        <li>默认{{userinfo}}</li>
+        <li>名字排序{{userinfo|orderBy:'name'}}</li>
+        <li>年龄升序排列{{userinfo|orderBy:'age'}}</li>
+        <li>年龄倒序{{userinfo|orderBy:'age':true}}</li>
+    </ul>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.today=new Date();
+//        $scope.users=['HYK','XX','HY','KMJ',1];
+        $scope.users=['Hyk','xx','hy','kmj'];
+        $scope.isCapitalized=function(str){
+            return str[0]==str[0].toUpperCase();
+        };
+        $scope.userinfo=[
+            {id:1,name:'aYK',age:22},
+            {id:2,name:'fYK',age:32},
+            {id:3,name:'bYK',age:42},
+            {id:4,name:'hYK',age:52},
+            {id:5,name:'sYK',age:72}
+        ]
+    });
+</script>
+</body>
+</html>

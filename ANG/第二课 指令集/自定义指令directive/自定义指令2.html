@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令2</title>
+    <style>
+        h3{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<h3>非智能方式</h3>
+<xx-directive></xx-directive>
+<hr>
+<h3>智能方式</h3>
+<my-directive1 my-url="http://www.baidu.com" my-text="百度"></my-directive1>
+<br>
+<my-directive2 my-link-url="http://www.baidu.com" my-link-text="百度"></my-directive2>
+
+<script src="../js/angular.js"></script>
+<script>
+    var app=angular.module("myApp",[]);
+    app.directive("xxDirective",function(){
+        return{
+            restrict:'EA',
+            template:'<a target="_blank" href="http://www.baidu.com">百度</a>'//硬编码方式,不智能
+        }
+    });
+    app.directive('myDirective1',function(){
+        return{
+            restrict:'EA',
+            scope:{
+                myUrl:'@',
+                myText:'@'
+            },
+            template: '<a target="_blank" ng-href="{{myUrl}}">{{myText}}</a>'
+        }
+    });
+    app.directive('myDirective2',function(){
+        return{
+            restrict:'EA',
+            scope:{
+                myUrl:'@myLinkUrl',
+                myText:'@myLinkText'
+            },
+            template: '<a target="_blank" ng-href="{{myUrl}}">{{myText}}</a>'
+        }
+    })
+</script>
+</body>
+</html>

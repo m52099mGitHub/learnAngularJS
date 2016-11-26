@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-cloak</title>
+</head>
+<body>
+<h1>内置指令的例子</h1>
+    <div ng-init="test='test is a test'">
+        <h2>指令3 :ng-cloak</h2>
+        <p>{{test}}</p>
+        <p ng-cloak>{{test}}</p>
+    </div>
+    <div ng-init="a=1;b=2;c=3">
+        <h2>指令4 :ng-bind-template</h2>
+        <p ng-bind-template="{{a}}{{b}}{{c}}"></p>
+    </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    angular.module('myApp',[]);
+</script>
+</body>
+</html>

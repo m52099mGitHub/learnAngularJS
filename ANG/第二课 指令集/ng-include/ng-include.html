@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-include</title>
+</head>
+<body>
+
+<div ng-include="'header.html'"></div>
+<h1>我是主题内容</h1>
+<div ng-include="'footer.html'"></div>
+
+
+<div ng-controller="myCtrl">
+    <select name="" id="" ng-model="template" ng-options="t.name for t in templates">
+        <option value="">选择模板</option>
+    </select>
+    <p>当前选中的模板为:{{template.url}}</p>
+    <div ng-include="template.url"></div>
+</div>
+
+
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.templates=[
+            {'name':'include1.html','url':'include1.html'},
+            {'name':'include2.html','url':'include2.html'},
+            {'name':'include3.html','url':'include3.html'}
+        ]
+    })
+
+</script>
+</body>
+</html>

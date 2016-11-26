@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>案例</title>
+</head>
+<body>
+<h2>案例</h2>
+<div ng-controller="myCtrl">
+    <form ng-submit="addUser()">
+        <input type="text" placeholder="请输入用户名..." ng-model="person.name"/>
+        <input type="submit" value="添加用户"/>
+    </form>
+    <hr>
+    <ul>
+        <li ng-repeat="v in users">{{v.name}}</li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller("myCtrl",function($scope){
+        $scope.person={
+            name:''
+        };
+        $scope.users=[];
+        $scope.addUser=function(){
+            if($scope.person.name){
+                $scope.users.push({name:$scope.person.name});
+                $scope.person.name='';
+            }
+        }
+    });
+</script>
+</body>
+</html>

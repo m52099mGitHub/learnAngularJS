@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>表达式</title>
+</head>
+<body>
+<h1>常量</h1>
+<ul>
+    <li>{{'this is hyk'}}</li>
+    <li> {{12}} </li>
+    <li> {{12344.2}} </li>
+</ul>
+<h1>表达式</h1>
+    {{'hello'+' '+'world'}}
+    <p>{{123}}</p>
+<h2>数组</h2>
+    <div ng-init="arr=['a','b','c','d']">
+        <p>{{arr[0]}}</p>
+        <p>{{arr[1]}}</p>
+        <p>{{arr[2]}}</p>
+        <p>{{arr[3]}}</p>
+    </div>
+<h2>对象</h2>
+    <div ng-init="obj={username:'hyk',age:'24', email:'HYK@163.com'}">
+        <p>{{obj.username}}</p>
+        <p>{{obj.age}}</p>
+        <p>{{obj.email}}</p>
+    </div>
+<h2>算术运算符</h2>
+    <p>{{1+1}}</p>
+    <p>{{1-10}}</p>
+    <p>{{3*9}}</p>
+    <p>{{3/9}}</p>
+
+<h2>比较运算符</h2>
+    <p>{{3>1}}</p>
+    <p>{{3>=1}}</p>
+    <p>{{3<1}}</p>
+    <p>{{3<=1}}</p>
+    <p>{{1=='1'}}</p>
+    <p>{{1==='1'}}</p>
+    <p>{{1!='1'}}</p>
+    <p>{{1!=='1'}}</p>
+<h2>逻辑运算符</h2>
+    <p>{{3>1 && 2<3}}</p>
+    <p>{{3>0||2<1}}</p>
+    <p>{{!1}}</p>
+<h2>赋值运算符</h2>
+<ul>
+    <li>{{num=123}}</li>
+    <li>{{num}}</li>
+</ul>
+<h2>三目运算符</h2>
+<ul>
+    <li>{{3>1?'hello hyk':'hello xx'}}</li>
+</ul>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+</script>
+</body>
+</html>

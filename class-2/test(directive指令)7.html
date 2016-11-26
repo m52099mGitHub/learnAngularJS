@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>URL引入文件</title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+	<hello></hello>
+	<script src="../js/angular.js"></script>
+	<script>
+		var app=angular.module("myApp",[]);
+		//以下两种发法可实现相同的效果,第二种方法更简单
+		/*app.directive('hello',function(){
+			return{
+				restrict:'AEMC',
+				template:'<div>Hello everyone!</div>',
+				replace:true
+			}
+		});*/
+		app.directive('hello',function(){
+			return{
+				restrict:'AEMC',
+				templateUrl:'test(双向数据绑定)3.html',
+				replace:true
+			}
+		});
+	</script>
+</body>
+</html>

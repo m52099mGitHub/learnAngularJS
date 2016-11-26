@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>事件传播方向</title>
+</head>
+<body>
+	<div ng-controller="Ctrl">
+		<p>{{greeting.text}},Angular</p>
+	</div>	
+	<script src="../js/angular.js"></script>
+	<script>
+		var app=angular.module("myApp",[]);
+		app.controller("Ctrl",['$scope',function($scope){
+			$scope.greeting={
+				text:'Hello'
+			}
+		}]);
+	</script>
+</body>
+</html>

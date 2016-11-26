@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>多个控制器</title>
+</head>
+<body>
+	<div>
+		<div ng-controller="Ctrl1">
+			Hello {{name}}!
+		</div>
+		<div ng-controller="Ctrl2">
+			<ol>
+				<li ng-repeat='name in names'>
+					{{name}} from {{department}}
+				</li>
+			</ol>
+		</div>
+	</div>
+
+
+	<script src="../js/angular.js"></script>
+	<script>
+	//注意$rootScope中的大写S
+		var app=angular.module("myApp",[]);
+		app.controller("Ctrl1",function($scope,$rootScope){
+			$scope.name="World";
+			$rootScope.department="Angular";
+		});
+		app.controller("Ctrl2",function($scope){
+			$scope.names=['HYK','XX','HY','KMJ'];
+		});
+	</script>
+</body>
+</html>

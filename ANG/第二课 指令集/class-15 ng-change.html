@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-show/hide</title>
+</head>
+<body>
+
+<div ng-controller="myCtrl">
+    <h2>ng-change</h2>
+    <p>请输入品论内容 </p>
+        <textarea ng-model="comment" id="" cols="30" rows="5" placeholder="请输入品论内容" ng-change="calc()"></textarea>
+    <p>您当前输入了{{count}}个字符,还可以输入{{sum-count}}</p>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.sum=100;
+        $scope.count=0;
+        $scope.calc=function(){
+            $scope.count++;
+        }
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-disabled</title>
+</head>
+<style type="text/css">
+
+</style>
+<body>
+
+<div ng-controller="myCtrl">
+    <h2>ng-disabled</h2>
+
+    <p><input type="text" ng-model="username"></p>
+
+    <p><button ng-disabled="!username">注册</button></p>
+
+    <p>禁用所有表单输入域:
+        <input type="checkbox" ng-model="all"/>
+    </p>
+
+    <p><input type="text" name="" id="" ng-disabled="all"/></p>
+
+    <p>
+        <textarea name="" id="" cols="30" rows="10" ng-disabled="all"></textarea>
+    </p>
+    <p><input type="radio" name="" id="" ng-disabled="all">aa</p>
+
+    <p><input type="checkbox" name="" id="" ng-disabled="all">bb</p>
+
+    <p>
+        <select name="" id="" ng-disabled="all">
+            <option value="cc">cc</option>
+            <option value="dd">dd</option>
+        </select>
+    </p>
+
+</div>
+
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+
+    })
+</script>
+</body>
+</html>

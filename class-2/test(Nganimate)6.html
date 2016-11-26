@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-animate</title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+		<div ng-controller="Ctrl">
+			<button ng-click="toggleMenu()">toggle Menu</button>
+			<ul ng-show='menuState.show'>
+				<li ng-click="stun()">stun</li>
+				<li ng-click="disintegrate()">disintegrate</li>
+				<li ng-click="erase()">erase</li>
+			</ul>
+		</div>
+		
+
+	<script src="../js/angular.js"></script>
+	<script>
+		var app=angular.module("myApp",[]);
+		app.controller("Ctrl",['$scope',function($scope){
+			$scope.menuState={show:false};
+			$scope.toggleMenu=function(){
+				$scope.menuState.show=!$scope.menuState.show;
+			};
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class改样式</title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<style>
+		.error{
+			background-color: #ff0000;
+		}
+		.warning{
+			background-color: #00ff00;
+		}
+	</style>
+</head>
+<body>
+		<div ng-controller="Ctrl">
+			<div ng-class='{error:isError,warning:isWarning}'>{{messageText}}</div>
+			<button ng-click="showError()">Simulate Error</button>
+			<button ng-click="showWarning()">Simulate Warning</button>
+		</div>
+		
+
+	<script src="../js/angular.js"></script>
+	<script>
+		var app=angular.module("myApp",[]);
+		app.controller("Ctrl",['$scope',function($scope){
+			$scope.isError=false;
+			$scope.isWarning=false;
+			$scope.showError=function(){
+				$scope.messageText='This is error!';
+				$scope.isError=true;
+				$scope.isWarning=false;
+			};
+			$scope.showWarning=function(){
+				$scope.messageText='This is warning!';
+				$scope.isError=false;
+				$scope.isWarning=true;
+			}
+		}]);
+	</script>
+</body>
+</html>

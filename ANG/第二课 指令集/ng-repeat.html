@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+</head>
+<style type="text/css">
+    .odd{
+        background: #00A000;
+    }
+    .even{
+        background: #5bc0de;
+    }
+</style>
+<body>
+<h1>内置指令的例子</h1>
+    <div ng-controller="myCtrl">
+        <ul>
+            <li ng-repeat="user in vm.arr">用户名:{{user}}</li>
+        </ul>
+        <ul>
+            <li ng-repeat="(key,val) in vm.arr">{{key}}---{{val}}</li>
+        </ul>
+        <ul>
+            <li>当数组中出现重复元素时,要指定唯一索引(track by $index)才能输出数据</li>
+            <li ng-repeat="v in vm.arr1 track by $index">{{v}}--{{$index}}</li>
+        </ul>
+        <h1>遍历数组</h1>
+        <table border="1" cellspacing="0" cellpadding="0" width="80%" bgcolor="aqua">
+            <tr>
+                <td>编号</td>
+                <td>用户名</td>
+                <td>年龄</td>
+                <td>邮箱</td>
+            </tr>
+            <tr ng-repeat="userInfo in vm.userInfos">
+                <td>{{userInfo.id}}</td>
+                <td>{{userInfo.username}}</td>
+                <td>{{userInfo.age}}</td>
+                <td>{{userInfo.email}}</td>
+            </tr>
+        </table>
+        <h1>遍历对象</h1>
+        <ul>
+            <li ng-repeat="key in vm.proInfo">{{key}}</li>
+        </ul>
+        <hr>
+        <h1>分块遍历</h1>
+        <header ng-repeat-start="v in vm .arr2">
+            header  {{v}}
+        </header>
+        <div>
+            main
+        </div>
+        <footer ng-repeat-end="">
+            footer {{v}}
+        </footer>
+    </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        var vm=$scope.vm={};
+        vm.arr=['hyk','xx','xy','hx'];
+        vm.arr1=['a','b','c','c'];
+        //遍历数组
+        vm.userInfos=[
+            {id:1,username:'hyk1',age:18,'email':'hyk1@163.com'},
+            {id:2,username:'hyk2',age:18,'email':'hyk2@163.com'},
+            {id:3,username:'hyk3',age:18,'email':'hyk3@163.com'},
+            {id:4,username:'hyk4',age:18,'email':'hyk4@163.com'},
+            {id:5,username:'hyk5',age:18,'email':'hyk5@163.com'},
+            {id:6,username:'hyk6',age:18,'email':'hyk6@163.com'},
+            {id:7,username:'hyk7',age:18,'email':'hyk7@163.com'}
+        ];
+        //遍历对象
+        vm.proInfo={id:1,proNmae:'angularJS',price:100};
+        //分块遍历
+        vm.arr2=['a','b','c'];
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>services</title>
+</head>
+<body>
+<div ng-controller="MyCtrl">
+    <h1>内置服务的例子</h1>
+    <p>当前页面的URL:{{currentUrl}}</p>
+    <p>$timeout:{{test}}</p>
+    <p>当前时间为:{{currentTime}}</p>
+    <p><button ng-click="loadData()">加载数据</button></p>
+</div>
+
+<div ng-controller="MyCtrl1">
+    <p>{{test}}</p>
+</div>
+
+
+<script type="text/javascript" src="angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl',function($scope,$interval,$timeout,$http){
+       $interval(function(){
+           $scope.currentTime=new Date().toLocaleTimeString();
+       },1000);
+        $timeout(function(){
+            $scope.test='this is a test';
+        },1000);
+        $scope.loadData=function(){
+            console.log('开始加载数据');
+            $http.get('getData.php').success(function(data){
+                console.log('数据加载完成');
+                console.log(data);
+            }).error(function(){
+                        alert('load data error!')
+                    });
+        }
+    });
+    //service()
+    app.service('testService',function(){
+        this.capitalize=function(str){
+            return str[0].toUpperCase()+str.slice(1);
+        }
+    });
+    app.controller('MyCtrl1',function($scope,testService){
+        $scope.test=testService.capitalize('hyk');
+    })
+</script>
+</body>
+</html>

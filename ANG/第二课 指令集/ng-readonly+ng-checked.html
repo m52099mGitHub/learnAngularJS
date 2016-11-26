@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-readonly</title>
+</head>
+<body>
+<h1>内置指令的例子</h1>
+<h2>ng-readonly</h2>
+<div ng-controller="myCtrl">
+    只读: <input type="text" ng-readonly="readonly">
+    <br>
+    网站协议: <textarea name="" id="" cols="30" rows="10" ng-readonly="readonly">网站协议只能读</textarea>
+    <hr>
+    <h2>全选:<input type="checkbox" ng-model="allCheck"></h2>
+    <input type="checkbox" value="1" ng-checked="allCheck">哈哈
+    <input type="checkbox" value="2" ng-checked="allCheck">哈哈
+    <input type="checkbox" value="3" ng-checked="allCheck">哈哈
+    <input type="checkbox" value="4" ng-checked="allCheck">哈哈
+    <input type="checkbox" value="5" ng-checked="allCheck">哈哈
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller("myCtrl",function($scope){
+        $scope.readonly=true;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-class</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .even{
+            background-color: yellow;
+        }
+        .odd{
+            background-color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+<h1>内置指令的例子</h1>
+<h2>ng-class</h2>
+<div ng-controller="myCtrl">
+    <button ng-click="bgColor='red'">红色</button>
+    <button ng-click="bgColor='blue'">蓝色</button>
+   <h1 ng-class="bgColor">Hello hyk</h1>
+    <ul>
+        <li ng-repeat="v in arr" ng-class-even="'even'" ng-class-odd="'odd'">{{v}}</li>
+    </ul>
+    <hr>
+    <div ng-include="'ng-include/header.html'"></div>
+    <div ng-include="'ng-include/header.html'"></div>
+    <div ng-include="'ng-include/footer.html'"></div>
+    <div ng-include="'ng-include/header.html'"></div>
+
+
+    <hr>
+    <select name="" id="" ng-model="myTeacher">
+        <option value="HYK">HYK</option>
+        <option value="XX">XX</option>
+        <option value="XY">XY</option>
+    </select>
+    <div ng-switch="myTeacher">
+        <div ng-switch-when="HYK">
+            <h1>HYK是程序员</h1>
+        </div>
+        <div ng-switch-when="XX">
+            <h1>XX是程序媛</h1>
+        </div>
+        <div ng-switch-when="XY">
+            <h1>XY是....</h1>
+        </div>
+        <div ng-switch-default>
+            <h1>这些人都是....</h1>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller("myCtrl",function($scope){
+        $scope.arr=['a','b','c','d'];
+    });
+</script>
+</body>
+</html>

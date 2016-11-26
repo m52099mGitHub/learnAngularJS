@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+    <style type="text/css">
+        .odd{
+            background: #00A000;
+        }
+        .even{
+            background: #5bc0de;
+        }
+    </style>
+</head>
+
+<body>
+<h1>内置指令的例子</h1>
+    <div ng-controller="myCtrl">
+    <h2>number过滤器</h2>
+        <ul>
+            <li>{{123}}</li>
+            <li>{{123.45678}}</li>
+            <li>{{123.45678|number}}</li>
+            <li>{{123.45678|number:2}}</li>
+            <li>{{12345678|number}}</li>
+        </ul>
+        <h2>currency格式化数字转换为货币形式</h2>
+        <ul>
+            <li>{{1234|currency}}</li>
+            <li>{{1234|currency:'¥'}}</li>
+            <li>{{1234.567|currency:'RMB'}}</li>
+        </ul>
+        <h2>date日期过滤器</h2>
+        <ul>
+            <li>{{today}}</li>
+            <li>{{today|date:'medium'}}</li>
+            <li>{{today|date:'yyyy'}}</li>
+            <li>英文月份:{{today|date:'MMMM'}}</li>
+        </ul>
+        <h2>字符串大小写转换</h2>
+        <ul>
+            <li>{{'hyk'|uppercase}}</li>
+            <li>{{'HYK'|lowercase}}</li>
+        </ul>
+        <h2>filter过滤器</h2>
+        <ul>
+            <li>{{users}}</li>
+            <li>{{users|filter:'h'}}</li>
+            <li>{{users|filter:'k':false}}</li>
+            <li>{{users|filter:'xy':true}}</li>
+            <li>{{users|filter:isCapitalized}}</li>
+        </ul>
+        <h2>json过滤器</h2>
+        <ul>
+            <li><pre>{{test}}</pre></li>
+            <li><pre>{{test|json}}</pre></li>
+        </ul>
+        <h2>limitTo宽度限制</h2>
+        <ul>
+            <li>{{test1}}</li>
+            <li>{{test1|limitTo:5}}</li>
+            <li>{{test1|limitTo:5}}...</li>
+            <li>{{users|limitTo:2}}</li>
+        </ul>
+        <h2>orderBy排序</h2>
+        <ul>
+            <li>{{usesInfo}}</li>
+        </ul>
+        <table border="1" bgcolor="#abcdef" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>编号</td>
+                <td>名称</td>
+                <td>年龄</td>
+            </tr>
+            <tr ng-repeat='user in usersInfo|orderBy:"id":true'>
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.age}}</td>o
+            </tr>
+        </table>
+    </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.today=new Date();
+        $scope.users=['Hyk','XX','xy','hy','kmj'];
+        $scope.isCapitalized=function(str){
+            return str[0]==str[0].toUpperCase();
+        };
+        $scope.test={
+            username:'hyk',
+            title:'程序猿',
+            desc:'你好!'
+        };
+        $scope.test1='helloworld';
+        $scope.usersInfo=[
+            {id:1,username:'hyk',age:20},
+            {id:3,username:'xx',age:18},
+            {id:5,username:'hy',age:20},
+            {id:2,username:'xy',age:18},
+            {id:4,username:'kmj',age:20},
+            {id:6,username:'hh',age:18},
+        ]
+    })
+</script>
+</body>
+</html>

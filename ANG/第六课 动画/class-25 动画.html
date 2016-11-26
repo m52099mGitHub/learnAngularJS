@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .box1{
+            background: #00A000;
+            width:200px;
+            height: 200px;
+            transition: all linear 1s;
+        }
+        .box1.ng-leave{
+            background: #00b3ee;
+        }
+        .box1.ng-leave-active{
+            background: #1f3aa3;
+            width:50px;
+            height: 50px;
+        }
+        .box1.ng-enter{
+            background: #6F0101;
+            width:100px;
+            height: 100px;
+        }
+        .box1.ng-enter-active{
+            background: #3c3c3c;
+        }
+    </style>
+</head>
+<body>
+<!--
+    .ng-enter:元素刚进入时的状态
+    .ng-enter-active:元素进入完成时的状态
+    .ng-leave:元素刚开始离开时的状态
+    .ng-leave-active:元素离开完成时的状态
+-->
+<div ng-controller="myCtrl">
+    <h1>显示与隐藏 <input type="checkbox" ng-model="isShow"></h1>
+    <div ng-if="isShow" class="box1"></div>
+</div>
+<script></script>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/angular-animate.min.js"></script>
+<script>
+    var app=angular.module('myApp',['ngAnimate']);
+    app.controller('myCtrl',function($scope){
+        $scope.isShow=true;
+    });
+
+</script>
+</body>
+</html>

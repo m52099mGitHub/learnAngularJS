@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+</head>
+<style type="text/css">
+    .odd{
+        background: #00A000;
+    }
+    .even{
+        background: #5bc0de;
+    }
+</style>
+<body>
+<h1>内置指令的例子</h1>
+    <div ng-init="users=['HYK','XX','HY','XH']">
+        <h2>指令5:ng-repeat</h2>
+        <h3>方式1:x in users</h3>
+        <h2>ng-repeat-数组</h2>
+        <ul>
+            <li ng-repeat="user in users">{{user}}</li>
+        </ul>
+    </div>
+    <div ng-init="usersinfo=[
+    {id:1,username:'hyk1',age:12,email:'hyk@163.com'},
+    {id:2,username:'hyk2',age:22,email:'hyk@163.com'},
+    {id:3,username:'hyk3',age:32,email:'hyk@163.com'},
+    {id:4,username:'hyk4',age:42,email:'hyk@163.com'},
+    {id:5,username:'hyk5',age:52,email:'hyk@163.com'},
+    ]">
+        <h3>方式1:x in users</h3>
+        <ul>
+            <li ng-repeat="v in userinfo">
+                <p>索引:{{$index}}</p>
+                <p>编号:{{v.id}}</p>
+                <p>用户名:{{v.username}}</p>
+                <p>年龄:{{v.age}}</p>
+                <p>邮箱:{{v.email}}</p>
+            </li>
+        </ul>
+    </div>
+
+
+    <div ng-init="userinfo={id:1,username:'hyk1',age:12,email:'hyk@163.com'}">
+        <h3>方式2:(k,v) in users</h3>
+        <table border="1" bgcolor="#00FFFF">
+            <tr ng-repeat="(k,v) in userinfo">
+                <td>{{k}}</td>
+                <td>{{v}}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-init="users['HYK','XX','XX','XH']">
+        <h3>方式3(名字有重复时):x in users tracks by $index</h3>
+        <ul>
+            <li ng-repeat="user in users track by $index">{{user}}</li>
+        </ul>
+    </div>
+
+
+
+    <div ng-init="usersinfo=[
+        {id:1,username:'hyk1',age:12,email:'hyk@163.com'},
+        {id:2,username:'hyk2',age:22,email:'hyk@163.com'},
+        {id:3,username:'hyk3',age:32,email:'hyk@163.com'},
+        {id:4,username:'hyk4',age:42,email:'hyk@163.com'},
+        {id:5,username:'hyk5',age:52,email:'hyk@163.com'},
+        ]">
+        <h2>$index,$first,$middle,$last,$even,$odd</h2>
+        <ul>
+            <li ng-repeat="x in usersinfo" ng-class="{even:$even,odd:$odd}">
+                {{$index}}--{{x.username}}--{{x.age}}--{{x.email}}
+            </li>
+        </ul>
+    </div>
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        var vm=$scope.vm={};
+        vm.user=['hyk','xx','xy'];
+    })
+
+</script>
+</body>
+</html>

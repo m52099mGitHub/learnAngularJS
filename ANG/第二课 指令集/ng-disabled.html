@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-disabled</title>
+</head>
+<body>
+<h1>内置指令的例子</h1>
+<h2>ng-disabled:可以用于表单控件  input text radio checkbox number url email submit button</h2>
+<div ng-controller="myCtrl">
+    <form ng-submit="subForm()">
+        禁用所有控件: <input type="checkbox" ng-model="disabled"/>
+        <hr>
+        单行文本框: <input type="text" ng-disabled="disabled"/></br/>
+        单选框: <input type="radio" ng-disabled="disabled"></br/>
+        复选框: <input type="checkbox" ng-disabled="disabled"></br/>
+        number: <input type="number" ng-disabled="disabled"></br/>
+        url: <input type="url" ng-disabled="disabled"></br/>
+        search: <input type="search" ng-disabled="disabled"></br/>
+        email: <input type="email" ng-disabled="disabled"></br/>
+        button: <input type="button" ng-disabled="disabled"></br/>
+        <textarea name="" id="" cols="30" rows="10" ng-disabled="disabled"></textarea></br/>
+        <select name="" ng-disabled="disabled" id="">
+            <option value="1">bj1</option>
+            <option value="2">bj2</option>
+            <option value="3">bj3</option>
+            <option value="4">bj4</option>
+            <option value="5">bj5</option>
+        </select>
+        <hr>
+        同意协议: <input type="checkbox" ng-model="agree">
+        <br>
+        <input type="search" name="search" placeholder="输入关键字才可点击按钮" ng-model="agree">
+        <button ng-disabled="!agree">立即注册</button>
+
+        <input type="submit" value="注册">
+    </form>
+</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller("myCtrl",function($scope){
+        $scope.disabled="false";
+        $scope.subForm=function(){
+            console.log("立即注册!");
+        }
+    });
+</script>
+</body>
+</html>

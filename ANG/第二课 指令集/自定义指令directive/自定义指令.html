@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令1</title>
+    <style>
+        h3{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>自定义的指令在body里面用的时候要用'-'拆分</h2>
+<h3>元素(标签方式)</h3>
+<xx-directive></xx-directive>
+<h3>属性方式</h3>
+<div xx-directive></div>
+<hr>
+<br/>
+<h3>类的方式(要做处理才能出现效果EAC):</h3>
+<h3>元素(标签方式)</h3>
+<my-directive1></my-directive1>
+<h3>属性方式</h3>
+<div my-directive1></div>
+<h3>类的方式</h3>
+<div class="my-directive1"></div>
+<hr>
+<br>
+<h3>注释的方式</h3>
+<!-- directive:my-directive2 -->
+
+<hr>
+<h3>自定义指令扩展</h3>
+<my-directive3></my-directive3>
+<my-directive4></my-directive4>
+<script src="../js/angular.js"></script>
+<script>
+    var app=angular.module("myApp",[]);
+    app.directive("xxDirective",function(){
+        return{
+            template:'<h1>这是自定义指令</h1>'
+        }
+
+    });
+    //默认自定义指令调用方式是EA,E----元素(标签)方式,---可用于自定义组件;A----属性方式--可用于扩展已有元素;C---类方式,M---注释方式
+    app.directive('myDirective1',function(){
+        return {
+            restrict:'EAC',
+            template:'<h1>我(类)可以以三种方式调用指令</h1>'
+        }
+    });
+    app.directive('myDirective2',function(){
+        return{
+            restrict:'M',//指定调用方式为M方式(注释方式)
+            replace:'true',//去除默认的自定义指令调用方式
+            template:'<h1>我是以注释调用的指令</h1>'
+        }
+    });
+    app.directive("myDirective3",function(){
+        return {
+            replace:false,
+            template:'<h1>Hello World</h1>\
+            <p>我是洪苑坤</p>\
+            <p>我是程序猿</p>'
+        }
+    });
+    app.directive("myDirective4",function(){
+        return{
+            templateUrl:'nav.html'
+        }
+    })
+</script>
+</body>
+</html>

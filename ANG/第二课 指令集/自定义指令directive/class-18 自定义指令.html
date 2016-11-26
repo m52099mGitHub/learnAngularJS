@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令 directive</title>
+</head>
+<body>
+
+<div ng-controller="myCtrl">
+    <my-directive></my-directive>
+    <my1-directive></my1-directive>
+    <div my1-directive></div>
+
+    <h2>EACM</h2>
+    <my2-directive></my2-directive>
+    <div my2-directive></div>
+    <div class="my2-directive"></div>
+    <!-- directive:my3-directive -->
+    <div my4-directive></div>
+    <div my5-directive></div>
+</div>
+
+
+<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]).controller('myCtrl',function(){});
+    app.directive('myDirective',function(){
+        return{
+            template:'<h1>这是自定义指令</h1>'
+        }
+    });
+    app.directive('my1Directive',function(){
+        return{
+            template:'<h2>这是默认的指令调用方式</h2>'
+        }
+    });
+    app.directive('my2Directive',function(){
+        return{
+            restrict:'EACM',
+            template:'<h2>四种方式都可调用指令</h2>'
+        }
+    });
+    app.directive('my3Directive',function(){
+        return{
+            restrict:'M',
+            replace:true,
+            template:'<h3>注释的形式需要添加replace=true</h3>'
+        }
+    });
+    app.directive('my4Directive',function(){
+        return{
+            restrict:'EA',
+            template:'<p>this is s test</p>\
+                      <p>hello world</p>\  '
+        }
+    });
+    app.directive('my5Directive',function(){
+        return{
+            restrict:'EA',
+            templateUrl:'nav.html'
+        }
+    });
+</script>
+</body>
+</html>

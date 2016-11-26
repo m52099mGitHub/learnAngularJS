@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-readonly</title>
+</head>
+<style type="text/css">
+
+</style>
+<body>
+
+<div ng-controller="myCtrl">
+    <h2>ng-readonly</h2>
+    <p><input type="text" ng-readonly="true" value="只读"></p>
+
+
+    <h2>ng-checked</h2>
+    <h2>全选:<input type="checkbox" ng-model="checkAll"/></h2>
+    <input type="checkbox" value="1" ng-checked="checkAll"/>
+    <input type="checkbox" value="2" ng-checked="checkAll"/>
+    <input type="checkbox" value="3" ng-checked="checkAll"/>
+
+
+    <h2>ng-selected</h2>
+    <p>我选择的课程: <input type="checkbox" ng-model="selectedCourse"></p>
+    <select name="" id="">
+        <option value="1">PHP</option>
+        <option value="2">IOS</option>
+        <option value="3" ng-selected="selectedCourse">JS</option>
+    </select>
+
+    <h2>ng-href</h2>
+    <p><a href="{{myBlog}}">1查看PHPFamily.org</a></p>
+    <h3>有angularJs代码时,要用ng-href</h3>
+    <p><a ng-href="{{myBlog}}">2查看PHPFamily.org</a></p>
+
+
+    <h2>ng-src</h2>
+    <p><img src="{{myPic}}" alt=""></p>
+    <p><img ng-src="{{myPic}}" alt=""></p>
+</div>
+
+
+
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope,$timeout){
+        $timeout(function (){
+            $scope.myBlog='http://phpfamilly.org';
+            $scope.myPic='img/love.jpg';
+        },3000)
+    })
+</script>
+</body>
+</html>
