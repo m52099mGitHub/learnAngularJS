@@ -2,21 +2,22 @@
 <html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title>module</title>
+    <title>ngrepeat</title>
 </head>
 <body>
-    <p>{{'hello world'}}</p>
 	<div ng-controller="MyCtrl">
-		<h1>Hello {{username}}</h1>
-	</div>
+        展开: <input type="checkbox" ng-model="showDetails">
+        <details ng-open="showDetails">
+            <summary>PHP</summary>
+            <p>PHP是最好的语言</p>
+        </details>
+    </div>
 <script type="text/javascript" src="js/angular.js"></script>
 <script>
-	//创建模块
     var app=angular.module('myApp',[]);
-    //创建控制器
     app.controller('MyCtrl',function($scope){
-    	$scope.username="HYK";
-    })
+    	$scope.showDetails=false;
+    });
 </script>
 </body>
 </html>

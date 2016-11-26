@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ngrepeat</title>
+</head>
+<body>
+	<div ng-controller="MyCtrl">
+        <form ng-submit="subForm()">
+            禁用所有文本框: <input type="checkbox" ng-model="disabled">   
+            <hr/>
+            单行文本框:<input type="text" ng-disabled="disabled"><br/>
+            <hr>
+            单选框: <input type="radio" ng-disabled="disabled"><br/>
+            <hr>
+            复选框: <input type="checkbox" ng-disabled="disabled"><br/><hr>
+            number: <input type="number" ng-disabled="disabled"><br/><hr>
+            url: <input type="url" ng-disabled="disabled"><br/><hr>
+            search: <input type="search" ng-disabled="disabled"><br/><hr>
+            email: <input type="email" ng-disabled="disabled"><br/><hr>
+            button: <input type="button" ng-disabled="disabled"><br/><hr>
+            textarea: <textarea type="url" ng-disabled="disabled"></textarea><br/><hr>
+            <select ng-disabled="disabled">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            同意协议: <input type="checkbox" ng-model="agree">
+            <br>
+            <input type="search" name="search" placeholder="请输入关键字..." ng-model="agree">
+            <button ng-disabled="!agree">立即注册</button>
+            <input type="submit" value="注册">
+        </form>
+    </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl',function($scope){
+    	$scope.disabled=false;
+        $scope.subForm=function(){
+            console.log("立即注册")
+        }
+    });
+</script>
+</body>
+</html>

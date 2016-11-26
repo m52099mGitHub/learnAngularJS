@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$scope</title>
+    <script>
+    //这里只有控制台数据在变
+      var i=5;
+      document.write("i的值为:"+i);
+      var test=window.setInterval(function(){
+        i++;
+        console.log(i);
+        if(i==10){
+          clearInterval(test);
+        }
+      },1000);
+    </script>
+
+</head>
+<body>
+	<div ng-controller="MyCtrl1">
+    <p>i的值为:{{i}}</p>
+  </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    //数据绑定和数据输出(将model绑定到视图:使视图跟着model变化)
+    app.controller('MyCtrl1',function($scope,$interval){
+      $scope.i=1;
+      $interval(function(){
+        $scope.i++;
+        console.log($scope.i);
+      },1000)
+    });
+</script>
+</body>
+</html>

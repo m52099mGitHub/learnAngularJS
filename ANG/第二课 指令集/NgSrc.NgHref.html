@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ngrepeat</title>
+</head>
+<body>
+	<div ng-controller="MyCtrl">
+        展开: <input type="checkbox" ng-model="showDetails">
+        <details ng-open="showDetails">
+            <summary>PHP</summary>
+            <p>PHP是最好的语言</p>
+        </details>
+        <hr>
+        <p><a href="{{userInfo.hubUrl}}">我的GitHub</a></p>
+        <p><a ng-href="{{userInfo.hubUrl}}">我的GitHub</a></p>
+        <p><img src="{{userInfo.PicSrc}}" alt="我的头像"></p>
+        <p><img ng-src="{{userInfo.PicSrc}}" alt="我的头像"></p>
+    </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl',function($scope){
+    	$scope.showDetails=false;
+        $scope.userInfo={};
+        $scope.userInfo.hubUrl="https://github.com/m52099mGitHub/learnAngularJS";
+        $scope.userInfo.PicSrc="https://avatars0.githubusercontent.com/u/23264633?v=3&s=40";
+    });
+</script>
+</body>
+</html>

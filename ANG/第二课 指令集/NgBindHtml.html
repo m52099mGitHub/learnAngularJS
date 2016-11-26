@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ngBindTemplate</title>
+</head>
+<body>
+    
+	<div ng-controller="MyCtrl">
+        <p>{{myText}}</p>
+        <p ng-bind-html="myText"></p>
+    </div>
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script src="js/angular-sanitize.js"></script>
+<script>
+    var app=angular.module('myApp',['ngSanitize']);
+    app.controller('MyCtrl',function($scope){
+    	$scope.myText="This is hyk <a href='http://www.baidu.com' target='_blank'>百度一下</a>";
+    })
+</script>
+</body>
+</html>

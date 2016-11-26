@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ngrepeat</title>
+</head>
+<body>
+	<div ng-controller="MyCtrl">
+        <ul>
+            <li ng-repeat="user in vm.arr">用户名:{{user}}</li>
+        </ul>
+        <hr/>
+        <ul>
+            <li ng-repeat="(key,val) in vm.arr">{{key}} :{{val}}</li>
+        </ul>
+        <hr/>
+        <p>数组中有重复值的处理用track by</p>
+        <ul>
+            <li ng-repeat="v in vm.arr1 track by $index">{{v}}---{{$index}}</li>
+        </ul>
+        <hr>
+        <h1>遍历数组</h1>
+        <table border="1" cellpadding="0" cellspacing="0" bgcolor="#abcdef" width="80%">
+            <tr>
+                <td>编号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>邮箱</td>
+            </tr>
+            <tr ng-repeat="userInfo in vm.usersInfo">
+                <td>{{userInfo.id}}</td>
+                <td>{{userInfo.username}}</td>
+                <td>{{userInfo.age}}</td>
+                <td>{{userInfo.email}}</td>
+            </tr>
+        </table>
+        <h1>遍历对象</h1>
+        <ul>
+            <li ng-repeat="val in vm.proInfo">{{val}}</li>
+        </ul>
+        <hr/>
+        <header ng-repeat-start="v in vm.arr2">
+            header {{v}}
+        </header>
+        <div>
+            Main  {{v}}
+        </div>
+        <footer ng-repeat-end>
+            Footer {{v}}
+        </footer>
+    </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl',function($scope){
+    	var vm=$scope.vm={};
+        vm.arr=['HYK','XX','HY','KMJ'];
+        vm.arr1=['a','b','c','d','a','b'];
+        //遍历数组
+        vm.usersInfo=[
+            {id:1,username:'HYK',age:18,'email':'m52099m@163.com'},
+            {id:2,username:'XX',age:18,'email':'X52099X@163.com'},
+            {id:3,username:'HY',age:19,'email':'H52099Y@163.com'},
+            {id:4,username:'KMJ',age:20,'email':'KM52099J@163.com'},
+            {id:5,username:'MM',age:21,'email':'M52099M@163.com'}
+        ];
+        //遍历对象
+        vm.proInfo={id:1,proName:'apple',price:5555};
+        vm.arr2=['a','b','c'];
+    });
+</script>
+</body>
+</html>

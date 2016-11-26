@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ngrepeat</title>
+</head>
+<body>
+	<div ng-controller="MyCtrl">
+        只读: <input type="text" ng-readonly="readonly"><br/>
+        网站协议: <textarea ng-readonly="readonly" name="" id="" cols="30" rows="10">网站协议</textarea>
+        <h2>全选<input type="checkbox" ng-model="allCheck"></h2>
+        <input type="checkbox" value="1" ng-checked="allCheck">手机1
+        <input type="checkbox" value="2" ng-checked="allCheck">手机2
+        <input type="checkbox" value="3" ng-checked="allCheck">手机3
+        <input type="checkbox" value="4" ng-checked="allCheck">手机4
+
+    </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl',function($scope){
+    	$scope.readonly=true;
+    });
+</script>
+</body>
+</html>

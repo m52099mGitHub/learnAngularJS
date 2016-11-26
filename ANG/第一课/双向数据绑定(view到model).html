@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$scope</title>
+    
+
+</head>
+<body>
+	<div ng-controller="MyCtrl">
+    <p><input type="text" ng-model="username"></p>
+    <p>Hello {{username}}</p>
+  </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    //将视图绑定到model:使model跟着视图变化)
+    app.controller('MyCtrl',function($scope){
+      $scope.username="HYK";
+      $scope.$watch('username',function(){//$watch监测username的变化
+        console.log('username的值为:'+$scope.username);
+      })
+    });
+</script>
+</body>
+</html>

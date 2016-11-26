@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>controller</title>
+</head>
+<body>
+	<div ng-controller="MyCtrl1">
+        <p>用户名: {{username}}</p>
+        <p>邮箱: {{email}}</p>
+		<p>年龄: {{age}}</p>
+	</div>
+    <div ng-controller="MyCtrl2">
+        <p>{{test}}</p>
+        <p><button ng-click="play()">clickMe</button></p>
+    </div>
+    <div ng-controller="MyCtrl3">
+        <p>Count:{{count}}</p>
+        <p><button ng-click="incr()">+1</button></p>
+        <p><button ng-click="decr()">-1</button></p>
+    </div>
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl1',function($scope){
+    	$scope.username="HYK";
+        $scope.email="m52099m@163.com";
+        $scope.age=18;
+    });
+    app.controller('MyCtrl2',function($scope){
+        $scope.test="This is a test";
+        $scope.play=function(){
+            alert("playing.....")
+        }
+    });
+    app.controller('MyCtrl3',function($scope){
+        $scope.count=1;
+        $scope.incr=function(){
+            $scope.count++;
+        };
+        $scope.decr=function(){
+            $scope.count--;
+        };
+    })
+</script>
+</body>
+</html>

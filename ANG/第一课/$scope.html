@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$scope</title>
+</head>
+<body>
+	<div ng-controller="MyCtrl1">
+    <p>用户名:{{username}}</p>
+    <p>{{text}}</p>
+	</div>
+  <div ng-controller="MyCtrl2">
+    <p>用户名:{{username}}</p>
+    <p>内容:{{text}}</p>
+  </div>
+  <div ng-controller="MyCtrl3">
+    <p>{{username}}</p>
+  </div>
+  <div ng-controller="MyCtrl4">
+    <p>{{username}}</p>
+  </div>
+  <div ng-controller="ParentCtrl">
+    <p>parent:{{username}}</p>
+    <p><button ng-click="test()">parentClick</button></p>
+    <div ng-controller="ChildCtrl">
+      <p>子控制器拿到了{{username}}</p>
+      <p><button ng-click="test1()">childClick</button></p>
+    </div>
+  </div>
+  <div ng-controller="ParentCtrl1">
+    <p>parent:{{userInfo.username}}</p>
+    <p><button ng-click="test()">parent1Click</button></p>
+    <div ng-controller="ChildCtrl1">
+      <p>子控制器拿到了{{userInfo.username}}</p>
+      <p><button ng-click="test1()">child1Click</button></p>
+    </div>
+  </div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl1',['$scope',function($scope){
+      $scope.text='我是MyCtrl中的内容';
+      $scope.username='HYK';
+    }]);
+    app.controller('MyCtrl2',function($scope){
+      $scope.username='XX';
+    });
+    app.controller('MyCtrl3',function($scope,$rootScope){
+      $scope.username='HY';
+      $rootScope.username='root username';
+      $rootScope.text='root text';
+    })
+    app.controller('MyCtrl4',function($scope){
+      //MyCtrl4中没有设置username属性,他会向上找到MyCtrl3中的username属性
+    });
+
+    //js中对象要么是值复制,要么是引用复制,字符串,数值,布尔类型是值复制,数组,对象和函数是引用复制
+    app.controller('ParentCtrl',function($scope){
+      $scope.username='parentContent';
+      $scope.test=function(){
+        $scope.username='update from parent ctrl';
+      };
+    });
+    app.controller('ChildCtrl',function($scope){
+      $scope.test1=function(){
+        $scope.username='update from child ctrl'
+      }
+    });
+    app.controller('ParentCtrl1',function($scope){
+      $scope.userInfo={
+        username:'mm'
+      };
+      $scope.test=function(){
+        $scope.userInfo.username='update from parent1 ctrl';
+      };
+    });
+    app.controller('ChildCtrl1',function($scope){
+      $scope.test1=function(){
+        $scope.userInfo.username='update from child1 ctrl'
+      }
+    });
+</script>
+</body>
+</html>

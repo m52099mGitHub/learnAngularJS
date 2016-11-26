@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>modelType</title>
+</head>
+<body>
+	<div ng-controller="MyCtrl1">
+       <ul>
+           <li>{{username}}</li>
+           <li>{{age}}</li>
+           <li>{{isMarried}}</li>
+           <li>{{birth}}</li>
+           <li>{{arr[0]}}</li>
+           <li>{{arr[1]}}</li>
+           <li>{{arr[2]}}</li>
+           <li>{{arr[3]}}</li>
+           <li>{{arr[4]}}</li>
+           <li>{{obj.title}}</li>
+           <li>{{obj.desc}}</li>
+           <li>{{usersInfo[0].id}}</li>
+           <li>{{usersInfo[0].username}}</li>
+           <li>{{usersInfo[0].email}}</li>
+       </ul>
+	</div>
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    /*app.controller('MyCtrl1',function($scope){
+
+    });*/
+    app.controller('MyCtrl1',['$scope',function($scope){
+        $scope.username="HYK";
+        $scope.age=18;
+        $scope.salary=12345.2;
+        $scope.isMarried=true;
+        $scope.birth=new Date();
+        $scope.arr=['a','b','c'];
+        $scope.obj={
+            title:'HYK',
+            desc:'是学生'
+        };
+        $scope.usersInfo=[
+            {id:1,username:'hyk',email:'m52099m@163.com'},
+            {id:2,username:'xx',email:'x52099x@163.com'},
+            {id:3,username:'hy',email:'h52099h@163.com'},
+            {id:4,username:'kmj',email:'km52099j@163.com'},
+            {id:5,username:'ywq',email:'yw52099q@163.com'}
+        ]
+    }]);
+
+</script>
+</body>
+</html>

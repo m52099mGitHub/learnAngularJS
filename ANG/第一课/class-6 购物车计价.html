@@ -5,32 +5,29 @@
     <title>双向数据绑定</title>
 </head>
 <body>
-<h1>双向数据绑定</h1>
-<div ng-controller="myCtrl">
-    <p>i的值为:{{i}}</p>
-    <p></p>
-</div>
+    <h1>双向数据绑定</h1>
+    <div ng-controller="myCtrl">
+       单价: <input type="text" ng-model="price">
+       数量: <input type="text" ng-model="count">
+       总价:  {{sum}}
+    </div>
 <script type="text/javascript" src="js/angular.js"></script>
-<script>
-   /* var i=5;
-    document.write("i的值为:"+i);
-    var test=window.setInterval(function(){
-        i++;
-        console.log('i:'+i);
-        if(i==10){
-            clearInterval(test);
-        }
-    },1000);*/
-</script>
+
 <script>
     var app=angular.module("myApp",[]);
-    //数据绑定和数据输出
-    app.controller("myCtrl",function($scope,$interval){
-        $scope.i=1;
-        $interval(function(){
-            $scope.i++;
-            console.log("i:"+$scope.i);
-        },1000);
+    app.controller("myCtrl",function($scope){
+        $scope.price=0;
+        $scope.count=0;
+        $scope.sum=$scope.price*$scope.count;
+        //监测model中数据是否改变
+        $scope.$watch('price',function(newVal,oldVal){
+            console.log('price的值改变了:'+$scope.price);
+            console.log('count的值改变了:'+oldVal);
+            console.log('price的新值为:'+newVal);
+        });
+        $scope.$watch('count',function(newVal){
+            $scope.sum=$scope.price*newVal;
+        })
     });
 </script>
 </body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>testDirective</title>
+</head>
+<body>
+    <h1>ng-init初始化数据;ng-bind消除闪烁</h1>
+    <ul ng-init="username='HYK';age=18;email='m52099m@163.com'">
+        <li>用户名: {{username}}</li>
+        <li>年龄: {{age}}</li>
+        <li>邮箱: {{email}}</li>
+        <li ng-bind="username"></li>
+        <li class="ng-bind:email"></li>
+    </ul>
+	<div ng-controller="MyCtrl">
+        
+    </div>
+
+<script type="text/javascript" src="js/angular.js"></script>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('MyCtrl',function($scope){
+    	
+    })
+</script>
+</body>
+</html>
